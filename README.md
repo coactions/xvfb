@@ -27,8 +27,8 @@ jobs:
 Modern [GitHub Actions Ubuntu images](https://github.com/actions/runner-images/tree/main/images/ubuntu) now include `xvfb` so this Action could be replaced by:
 
 ```yml
-- if: startsWith(matrix.os, 'ubuntu')
+- if: runner.os == 'Linux'
   run: xvfb-run npm test
-- if: "!startsWith(matrix.os, 'ubuntu')"
+- if: ${{ ! runner.os == 'Linux' }}
   run: npm test
 ```
